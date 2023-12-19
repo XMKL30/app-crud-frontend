@@ -30,4 +30,12 @@ export class ListComponent {
     return this.dataSource.data.length;
   }
 
+  delete(id: string) {
+    this.crudService.delete(id).subscribe(() => {});
+    this.crudService.getData().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+    })
+  }
+
 }
