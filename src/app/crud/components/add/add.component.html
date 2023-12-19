@@ -1,1 +1,51 @@
-<p>add works!, add salesperson</p>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2 class="row">Add Salesperson</h2>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Registration code</mat-label>
+                <input matInput required [(ngModel)]="salesPerson.registration_no">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput required [(ngModel)]="salesPerson.salesperson_name">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Start date</mat-label>
+                <input matInput required [(ngModel)]="salesPerson.registration_start_date">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>End date</mat-label>
+                <input matInput required [(ngModel)]="salesPerson.registration_end_date">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Agent license code</mat-label>
+                <input matInput required [(ngModel)]="salesPerson.estate_agent_license_no">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Agent name</mat-label>
+                <input matInput required [(ngModel)]="salesPerson.estate_agent_name">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <button class="col" mat-raised-button color="primary" (click)="createSalesperson()">Save</button>
+            <button class="col" mat-raised-button color="warn" routerLink="">Cancel</button>
+        </div>
+    </div>
+</div>
