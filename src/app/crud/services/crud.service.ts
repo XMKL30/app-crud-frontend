@@ -16,4 +16,20 @@ export class CrudService {
   getData(): Observable<Salesperson[]> {
     return this.http.get<Salesperson[]>(this.url);
   }
+
+  insert(salesperson: Salesperson) {
+    return this.http.post(this.url, salesperson);
+  }
+
+  modify(salesperson: Salesperson) {
+    return this.http.put(this.url, salesperson);
+  }
+
+  getById(id: string) {
+    return this.http.get<Salesperson>(`${this.url}/${id}`);
+  }
+
+  delete(id: string) {
+    return this.http.delete<Salesperson>(`${this.url}/${id}`);
+  }
 }

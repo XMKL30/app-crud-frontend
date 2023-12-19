@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'crud-main-page',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-
+  constructor(public activatedRoute: ActivatedRoute) {}
 }

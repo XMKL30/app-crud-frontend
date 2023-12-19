@@ -6,6 +6,9 @@ import { AddComponent } from './components/add/add.component';
 import { MatTableModule } from '@angular/material/table' 
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AppRoutingModule } from '../app-routing.module';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CommonModule,
     MatTableModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    AppRoutingModule,
+    MatButtonModule,
+    MatIconModule
   ],
   exports: [
     MainComponent
