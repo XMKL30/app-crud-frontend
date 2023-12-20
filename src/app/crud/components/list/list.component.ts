@@ -17,6 +17,8 @@ export class ListComponent {
 
   displayedColumns: string[] = ['registration_no', 'salesperson_name', 'registration_start_date', 'registration_end_date', 'estate_agent_name', 'estate_agent_license_no'];
 
+  public searchType: string = '';
+
   constructor(private crudService: CrudService) {}
 
   ngOnInit(): void {
@@ -30,6 +32,10 @@ export class ListComponent {
     return this.dataSource.data.length;
   }
 
+  setType(type: string) {
+    this.searchType = type;
+  }
+
   delete(id: string) {
     this.crudService.delete(id).subscribe(() => {});
     this.crudService.getData().subscribe(data => {
@@ -39,10 +45,18 @@ export class ListComponent {
   }
 
   searchBy(text: string) {
-    this.crudService.getByName(text).subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    })
+    if(this.searchType === 'Name') {
+      this.crudService.getByName(text).subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+      })
+    }
+    else {
+      this.crudService.getByAgent(text).subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+      })
+    }
   }
 
 }

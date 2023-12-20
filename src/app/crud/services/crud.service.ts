@@ -36,4 +36,8 @@ export class CrudService {
   getByName(name: string) {
     return this.http.get<Salesperson[]>(`${this.url}/search/name?name=${name}`);
   }
+
+  getByAgent(name: string) {
+    return this.http.get<Salesperson[]>(`${this.url}/search/agent?agentName=${name}`);
+  }
 }

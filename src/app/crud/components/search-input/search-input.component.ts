@@ -14,9 +14,13 @@ export class SearchInputComponent {
   @Output()
   public onValue: EventEmitter<string> = new EventEmitter();
 
+  @Output()
+  public onType: EventEmitter<string> = new EventEmitter();
+
   public selectedOption: string = this.options[0].value;
 
   emitValue(searchText: string) {
+    this.onType.emit(this.selectedOption);
     this.onValue.emit(searchText);
   }
 }
