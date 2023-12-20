@@ -1,30 +1,42 @@
-<div class="row p-2">
-    <h2 class="col-10">List</h2>
-    <button class="col" mat-raised-button routerLink="new" color="primary">Add Salesperson <mat-icon>add_circle</mat-icon></button>
-</div>
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-        <ng-container *ngFor="let content of displayedColumns" matColumnDef="{{content}}">
-            <th mat-header-cell *matHeaderCellDef class="bg-dark text-light">{{content}}</th>
-            <td mat-cell *matCellDef="let element">{{element[content]}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef class="bg-dark text-light">actions</th>
-            <td mat-cell *matCellDef="let element">
-                <button mat-button [routerLink]="element.registration_no">
-                    <mat-icon  style="color: #3F51B5;">edit</mat-icon>
-                </button>
-                
-                <button mat-button (click)="delete(element.registration_no)">
-                    <mat-icon style="cursor: pointer; color: #F44A3E;">delete</mat-icon>
-                </button>
-            </td>
-        </ng-container>
-
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns.concat('actions')"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions')"></tr>
-    </table>
-    <mat-paginator [length]="getCantidad()" [pageSize]="10" aria-label="Select page"></mat-paginator>
+<div>
+    <div class="row text-center p-2 d-flex align-items-center">
+        <div class="col-2">
+            <h2>Salesperson List</h2>
+        </div>
+        <div class="col-8">
+            <crud-search-input (onValue)="searchBy($event)"></crud-search-input>
+        </div>
+        <div class="col-2">
+            <button mat-raised-button routerLink="new" color="primary" style="font-size: 20px; width: 100px; height: 40px;">
+                <mat-icon>add_circle</mat-icon>
+                <span>Add</span>
+            </button>
+        </div>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container *ngFor="let content of displayedColumns" matColumnDef="{{content}}">
+                <th mat-header-cell *matHeaderCellDef class="bg-dark text-light">{{content}}</th>
+                <td mat-cell *matCellDef="let element">{{element[content]}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="bg-dark text-light">actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button [routerLink]="element.registration_no">
+                        <mat-icon  style="color: #3F51B5;">edit</mat-icon>
+                    </button>
+                    
+                    <button mat-button (click)="delete(element.registration_no)">
+                        <mat-icon style="cursor: pointer; color: #F44A3E;">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+    
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns.concat('actions')"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions')"></tr>
+        </table>
+        <mat-paginator [length]="getCantidad()" [pageSize]="10" aria-label="Select page"></mat-paginator>
+    </div>
 </div>

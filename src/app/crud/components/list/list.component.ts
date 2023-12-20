@@ -38,4 +38,11 @@ export class ListComponent {
     })
   }
 
+  searchBy(text: string) {
+    this.crudService.getByName(text).subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+    })
+  }
+
 }

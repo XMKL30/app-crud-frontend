@@ -32,4 +32,8 @@ export class CrudService {
   delete(id: string) {
     return this.http.delete<Salesperson>(`${this.url}/${id}`);
   }
+
+  getByName(name: string) {
+    return this.http.get<Salesperson[]>(`${this.url}/search/name?name=${name}`);
+  }
 }

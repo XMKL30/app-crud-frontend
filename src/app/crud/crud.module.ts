@@ -13,12 +13,15 @@ import { MainComponent } from './pages/main/main.component';
 import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
 import { FormsModule } from '@angular/forms';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     MainComponent,
     ListComponent,
-    AddComponent
+    AddComponent,
+    SearchInputComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   exports: [
     MainComponent
