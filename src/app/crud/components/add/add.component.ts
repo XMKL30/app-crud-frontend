@@ -15,6 +15,10 @@ export class AddComponent implements OnInit {
   public idEdit: string = '';
   public mssg: string = 'Add Salesperson';
 
+  public selectedStartDate: Date = new Date();
+  public selectedEndDate: Date = new Date();
+  public today: Date = new Date();
+
   constructor(private crudService: CrudService, private route: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -38,11 +42,25 @@ export class AddComponent implements OnInit {
     this.crudService.insert(this.salesPerson).subscribe(() => {});
   }
 
+  validateInputs(salesperson: Salesperson): boolean {
+    if(salesperson.registration_start_date > salesperson.registration_end_date) return false;
+ 
+    if(!salesperson.registration_no || !salesperson.salesperson_name || !salesperson.estate_agent_license_no || !salesperson.estate_agent_name) return false;
+
+    return true;
+  }
+
   acept() {
-    if(this.isEditing) this.modifySalesperson();
-    else this.createSalesperson();
-    console.log(this.salesPerson);
-    this.route.navigateByUrl('');
+    this.salesPerson.registration_start_date = new Date(this.selectedStartDate).toLocaleDateString();
+    this.salesPerson.registration_end_date = new Date(this.selectedEndDate).toLocaleDateString();
+
+    if(this.validateInputs(this.salesPerson)) {
+      if(this.isEditing) this.modifySalesperson();
+      else this.createSalesperson();
+
+      console.log(this.salesPerson);
+      this.route.navigateByUrl('');
+    }
   }
 
 }
